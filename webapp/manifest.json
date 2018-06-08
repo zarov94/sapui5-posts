@@ -3,12 +3,12 @@
     "sap.app": {
         "id": "sap.fiori.postsApp",
         "type": "application",
-        "i18n": "i18n/i18n.properies",
+        "i18n": "i18n/i18n.properties",
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
         "applicationVersion": {
 			"version": "1.0.0"
-		}
+        }
     },
     "sap.ui":{
         "technology": "UI5",
@@ -32,7 +32,7 @@
         },
         "models": {
             "i18n": {
-                "type": "sap.ui.mode.resource:Resource",
+                "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
                     "bundleName": "sap.fiori.postsApp.i18n.i18n"
                 }
