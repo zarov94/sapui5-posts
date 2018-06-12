@@ -20,7 +20,7 @@
     },
     "sap.ui5":{
         "rootView": {
-            "viewName": "sap.fiori.postsApp.view.App",
+            "viewName": "sap.fiori.postsApp.view.AllPosts",
             "type": "XML",
             "async": true
         },
@@ -37,6 +37,29 @@
                     "bundleName": "sap.fiori.postsApp.i18n.i18n"
                 }
             }
+        },
+        "routing": {
+            "config":{
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "sap.fiori.postsApp.view",
+				"controlId": "app",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "home",
+                    "target": ["home"]
+                },
+                {
+                    "pattern": "posts/{postId}",
+                    "name": "post",
+                    "target": ["post"]
+                }
+
+            ]
         }
     }
 }

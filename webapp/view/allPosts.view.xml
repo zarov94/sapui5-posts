@@ -1,21 +1,27 @@
-<mvc:View controllerName="sap.fiori.postsApp.controller.Posts" 
+<mvc:View 
+    controllerName="sap.fiori.postsApp.controller.Posts" 
     xmlns="sap.m" 
     xmlns:mvc="sap.ui.core.mvc">
-    <Table id="posts" class="sapUiResponsive" width="auto" items="{posts>/}">
-        <headerToolbar>
-            <Toolbar>
-                <Title text="{postsPageTitle}"/>
-                <ToolbarSpacer/>
-                <SearchField width="50%" search="onFilterPosts"/>
-            </Toolbar>
-        </headerToolbar>
-        <columns>
-            <Column hAlign="End" minScreenWidth="Small" demandPopin="true" width="4em">
-                <Text text="{i18n>postIdTitle}"/>
-            </Column>
-            <Column>
-                <Text text="{i18n>postTitle}"/>
-            </Column>
-        </columns>
-    </Table>
+     <List items="{posts>/data}">
+      <items>
+        <StandardListItem
+				title="{posts>title}"
+				description="{posts>body}"/>
+	</items>
+    <headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>postsPageTitle}" level="H2" />
+				<ToolbarSpacer />
+				<Button
+					icon="sap-icon://settings"
+					press="handleButtonPress" />
+				<Button
+					icon="sap-icon://person-placeholder"
+					press="handleButtonPress" />
+				<Button
+					icon="sap-icon://drop-down-list"
+					press="handleButtonPress" />
+			</Toolbar>
+		</headerToolbar>
+   </List>
 </mvc:View>

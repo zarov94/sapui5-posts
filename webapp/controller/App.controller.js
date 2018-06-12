@@ -10,7 +10,7 @@ sap.ui.define([
 
 
         onInit: function () {
-
+            
             var oModel = new JSONModel();
 
             var aData = jQuery.ajax({
