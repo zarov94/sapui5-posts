@@ -9,30 +9,33 @@ sap.ui.define([
     return Controller.extend("sap.fiori.postsApp.controller.Posts", {
 
         onInit: function () {
+            console.log("Posts Controller");
+            
             var oPosts = new JSONModel();
             this.getView().setModel(oPosts, "posts");
             this._loadPosts();
         },
 
         _loadPosts: function() {
-            var self = this;
+
+            var postsUrl = "https://jsonplaceholder.typicode.com/posts";
+
+            var data = [];
+
             jQuery.ajax({
                 type: "GET",
                 contentType: "application/json",
-                url: "https://jsonplaceholder.typicode.com/posts",
+                url: postsUrl,
                 dataType: "json",
-                async: "false",
+                async: false,
                 success: function (response, textStatus, jqXHR) {
-                    console.log(response);
-
-                    self.getView().getModel("posts").setProperty("/data", response)
-                    alert("success to post");
+                    data = response;
                 }
             });
+            this.getView().getModel("posts").setProperty("/",data);
+
         },
-
         onFilterPosts: function (oEvent) {
-
             var aFilter = [];
             var sQuery = oEvent.getParameter("query");
 
@@ -44,9 +47,15 @@ sap.ui.define([
             var oBinding = oList.getBinding("items");
             oBinding.filter(aFilter);
         },
-        
-        onPostClick: function (oEvent) {
-            return oEvent;
+        onPress: function (oEvent) {
+
+            var oItem = oEvent.getSource();
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+
+            oRouter.navTo('detail', {
+                postPath: oItem.getBindingContext("posts").getPath().substr(1)
+            });
         }
+
     });
 });

@@ -1,27 +1,23 @@
-<mvc:View 
-    controllerName="sap.fiori.postsApp.controller.Posts" 
-    xmlns="sap.m" 
-    xmlns:mvc="sap.ui.core.mvc">
-     <List items="{posts>/data}">
-      <items>
-        <StandardListItem
-				title="{posts>title}"
-				description="{posts>body}"/>
-	</items>
-    <headerToolbar>
-			<Toolbar>
-				<Title text="{i18n>postsPageTitle}" level="H2" />
-				<ToolbarSpacer />
-				<Button
-					icon="sap-icon://settings"
-					press="handleButtonPress" />
-				<Button
-					icon="sap-icon://person-placeholder"
-					press="handleButtonPress" />
-				<Button
-					icon="sap-icon://drop-down-list"
-					press="handleButtonPress" />
-			</Toolbar>
-		</headerToolbar>
-   </List>
+<mvc:View controllerName="sap.fiori.postsApp.controller.Posts" 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page>
+		<List items="{posts>/}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="{i18n>postsPageTitle}"/>
+					<ToolbarSpacer/>
+					<SearchField width="50%" search="onFilterPosts"/>
+				</Toolbar>
+			</headerToolbar>
+			<items>
+				<StandardListItem title="{posts>title}" description="{posts>body}" type="Navigation" press="onPress"/>
+			</items>
+			<headerToolbar>
+				<Toolbar>
+					<Title text="{i18n>postsPageTitle}" level="H2" />
+				</Toolbar>
+			</headerToolbar>
+		</List>
+	</Page>
 </mvc:View>

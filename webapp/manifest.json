@@ -7,10 +7,10 @@
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
         "applicationVersion": {
-			"version": "1.0.0"
+            "version": "1.0.0"
         }
     },
-    "sap.ui":{
+    "sap.ui": {
         "technology": "UI5",
         "deviceTypes": {
             "desktop": true,
@@ -18,11 +18,12 @@
             "phone": true
         }
     },
-    "sap.ui5":{
+    "sap.ui5": {
         "rootView": {
-            "viewName": "sap.fiori.postsApp.view.AllPosts",
+            "viewName": "sap.fiori.postsApp.view.App",
             "type": "XML",
-            "async": true
+            "async": true,
+            "id": "app"
         },
         "dependencies": {
             "minUI5Vesrsion": "1.54",
@@ -39,27 +40,36 @@
             }
         },
         "routing": {
-            "config":{
+            "config": {
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "viewPath": "sap.fiori.postsApp.view",
-				"controlId": "app",
+                "controlId": "app",
                 "controlAggregation": "pages",
                 "async": true
             },
             "routes": [
                 {
                     "pattern": "",
-                    "name": "home",
-                    "target": ["home"]
+                    "name": "allposts",
+                    "target": "allposts"
                 },
                 {
-                    "pattern": "posts/{postId}",
-                    "name": "post",
-                    "target": ["post"]
+                    "pattern": "posts/{postPath}",
+                    "name": "detail",
+                    "target": "detail"
                 }
-
-            ]
+            ],
+            "targets": {
+                "allposts": {
+                    "viewId": "allposts",
+                    "viewName": "AllPosts"
+                },
+                "detail": {
+                    "viewId": "detail",
+                    "viewName": "PostDetail"
+                }
+            }
         }
     }
 }

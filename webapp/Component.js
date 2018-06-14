@@ -13,19 +13,12 @@ sap.ui.define([
 
             UIComponent.prototype.init.apply(this, arguments);
 
-
-            // var OData = {
-            //     //todo
-            // }
-            // var oModel = new JSONModel(oData);
-			// this.setModel(oModel);
-
             //set device model
 			var oDeviceModel = new JSONModel(Device);
 			oDeviceModel.setDefaultBindingMode("OneWay");
 			this.setModel(oDeviceModel, "device");
 
-            // this.getRouter().initialize();
+            this.getRouter().initialize();
         }
     });
 
